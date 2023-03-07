@@ -2,11 +2,11 @@
 
   # Specify input directory
 
-inputDir <- ""
+inputDir <- "~/Projects/r-projects/capital-stock-forecasts/inputs"
 
 # Specify location of R scripts
 
-scriptsPath <- ""
+scriptsPath <- "~/Projects/r-projects/capital-stock-forecasts"
 
 # Specify library path
 
