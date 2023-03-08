@@ -72,7 +72,7 @@ runTime <- format(Sys.time(), "%Y-%m-%d_%H%M") # Used in various file out names
 
 save_point_dir <- sprintf('./save-points/%s',runTime)
 
-if (!(dir.exists('./save-points'))) {
+if (!(dir.exists('./save-points/%s', runTime))) {
   dir.create(sprintf('./save-points/%s',runTime), recursive = TRUE)
 } else{
   dir.create(sprintf('./save-points/%s',runTime), recursive = FALSE)
