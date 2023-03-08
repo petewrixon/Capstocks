@@ -85,21 +85,23 @@ source("./PIM_inputs.R")
   # Run PIM
 
 source("./Run_pim.R")
-save.image(file = paste0(runTime,'/aft_Run_pim.R'))
+save.image(file = paste0(runTime,'/1_aft_Run_pim.R'))
 
   # Write out selected data (before post-processing)
 
 source("./Write_PIM_outputs.R")
-save.image(file = paste0(runTime,'/aft_Run_pim.R'))
+save.image(file = paste0(runTime,'/2_aft_Write_pim.R'))
   # Unchain results and perform reclassifications
 
 source("./Unchain.R")
-save.image(file = paste0(runTime,'/aft_Run_pim.R'))
+save.image(file = paste0(runTime,'/3_aft_unchain.R'))
   # Aggregate
 
 source("./Aggregate.R")
-save.image(file = paste0(runTime,'/aft_Run_pim.R'))
+save.image(file = paste0(runTime,'/4_aft_aggregate.R'))
 # Chain & ANNUALISATION
 
 source("./Chain.R")
-save.image(file = paste0(runTime,'/aft_Run_pim.R'))
+save.image(file = paste0(runTime,'/5_aft_chain.R'))
+
+sink()
