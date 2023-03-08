@@ -63,18 +63,23 @@ library(tempdisagg)
 library(purrrlyr)
 library(data.table)
 library(forcats)
+#pete
+library(arrow)
 
 # Timestamp
 
 runTime <- format(Sys.time(), "%Y-%m-%d_%H%M") # Used in various file out names
+
+save_point_dir <- sprintf('./save-points/%s',runTime)
 
 if (!(dir.exists('./save-points'))) {
   dir.create(sprintf('./save-points/%s',runTime), recursive = TRUE)
 } else{
   dir.create(sprintf('./save-points/%s',runTime), recursive = FALSE)
 }
+outputs_dir <- sprintf('./outputs/%s',runTime)
 
-save_point_dir <- sprintf('./save-points/%s',runTime)
+
 
 # Run sequential R scripts
 
@@ -85,23 +90,23 @@ source("./PIM_inputs.R")
   # Run PIM
 
 source("./Run_pim.R")
-save.image(file = paste0(runTime,'/1_aft_Run_pim.R'))
+save.image(file = file.path('./save-points',runTime,'1_aft_Run_pim.Rdata'))
 
   # Write out selected data (before post-processing)
 
 source("./Write_PIM_outputs.R")
-save.image(file = paste0(runTime,'/2_aft_Write_pim.R'))
+save.image(file = file.path('./save-points',runTime,'/2_aft_Write_pim.Rdata'))
   # Unchain results and perform reclassifications
 
 source("./Unchain.R")
-save.image(file = paste0(runTime,'/3_aft_unchain.R'))
+save.image(file = file.path('./save-points',runTime,'/3_aft_unchain.Rdata'))
   # Aggregate
 
 source("./Aggregate.R")
-save.image(file = paste0(runTime,'/4_aft_aggregate.R'))
+save.image(file = file.path('./save-points',runTime,'/4_aft_aggregate.Rdata'))
 # Chain & ANNUALISATION
 
 source("./Chain.R")
-save.image(file = paste0(runTime,'/5_aft_chain.R'))
+save.image(file = file.path('./save-points',runTime,'/5_aft_chain.Rdata'))
 
 sink()

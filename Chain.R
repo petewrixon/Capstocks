@@ -120,7 +120,16 @@ chained <- chainDataSkippingErrors(toChain, benchType = 4, refYear, correct_CVM 
 failures <- unlist(lapply(chained$chained, FUN = function(x) inherits(x, "error")))
 if (sum(failures) > 0)
 {
+  debug_path <- sprintf('./save-points/%s/debug/',runTime)
+  if(!dir.exists(debug_path)){dir.create(debug_path)}
+  
+  write_excel_csv(toChain, paste0(debug_path,toChain.csv))
+  write_excel_csv(chained, paste0(debug_path,chained.csv))
+  write_excel_csv(failures, paste0(debug_path, failures.csv))
+  
+  
   errs <- chained[(failures),]
+  write_excel_csv(failures, paste0(debug_path, errs.csv))
   flog.warn(paste0(sum(failures), " series failed to process:"), chained[failures, ], capture = TRUE)
   chained <- chained[!(failures),]
 } else {
@@ -219,6 +228,7 @@ chainedUnnestAnnual <- annualiseData(chainedUnnest)
 chainedUnnest <- gather(chainedUnnest, "Measure", "Value", 5:ncol(chainedUnnest))
 
 Quarterly <- rbind(aggregated_additive, chainedUnnest)
+Quarterly_long <- Quarterly
 Quarterly <- spread(Quarterly, Period, Value)
 
 # Annualise the data
@@ -227,9 +237,13 @@ aggregated_additiveAnnual <- gather(aggregated_additiveAnnual, "Measure", "Value
 chainedUnnestAnnual <- gather(chainedUnnestAnnual, "Measure", "Value", 5:ncol(chainedUnnestAnnual))
 
 Annual <- rbind(aggregated_additiveAnnual, chainedUnnestAnnual)
+Annual_long <- Annual
 Annual <- spread(Annual, Period, Value)
 
 # Output
 
-write.csv(Quarterly, "Quarterly_estimates.csv", row.names=F)
-write.csv(Annual, "Annual_estimates.csv", row.names=F)
+write.csv(Quarterly, file.path(outputs_dir,"quarterly_estimates.csv"), row.names=F)
+write.csv(Annual, file.path(outputs_dir,"Annual_estimates.csv"), row.names=F)
+
+write.csv(Quarterly_long, file.path(outputs_dir,"Quarterly_estimates_long.csv"), row.names = F)
+write.csv(Annual_long, file.path(outputs_dir,"Annual_estimates_long.csv"), row.names = F)
