@@ -1,47 +1,0 @@
--/                                                                                                                           /                                                                                                                           -                                                                                                                           -|                                                                                                                           /                                                                                                                           -\                                                                                                                           -/                                                                                                                           /                                                                                                                           -                                                                                                                           -/                                                                                                                           /                                                                                                                           -                                                                                                                           -/                                                                                                                           /                                                                                                                           -                                                                                                                           -/                                                                                                                           /                                                                                                                           -                                                                                                                           -/                                                                                                                           /                                                                                                                           -                                                                                                                           -|                                                                                                                           /                                                                                                                           -\                                                                                                                           INFO [2023-03-10 10:13:48] 
-Adding life lengths.
-INFO [2023-03-10 10:13:48] Reading AverageLifeLengths sheet.
-INFO [2023-03-10 10:13:48] Left-padding Industry codes with zero if required.
-INFO [2023-03-10 10:13:49] Reading CoVs sheet.
-INFO [2023-03-10 10:13:49] Left-padding Industry codes with zero if required.
-INFO [2023-03-10 10:13:50] Reading Max sheet.
-INFO [2023-03-10 10:13:50] Left-padding Industry codes with zero if required.
-INFO [2023-03-10 10:13:50] Reading Min sheet.
-INFO [2023-03-10 10:13:50] Left-padding Industry codes with zero if required.
-INFO [2023-03-10 10:13:50] Combining life lengths datasets.
-INFO [2023-03-10 10:13:52] Checking GFCF and life length specification coverage.
-INFO [2023-03-10 10:13:52] Joining life lengths to GFCF.
--/                                                                                                                           /                                                                                                                           -                                                                                                                           INFO [2023-03-10 10:13:52] Adding other parameters.
-[1mindexing[0m [34mseries_tax_util_cpi_reshape.csv[0m [===============================================================] [32m5.52GB/s[0m, eta: [36m 0s[0m                                                                                                                                                                INFO [2023-03-10 10:13:52] Checking parameters file for expected column headings.
-INFO [2023-03-10 10:13:52] Checking parameters data for missing coverage.
-INFO [2023-03-10 10:13:52] Joining parameters.
-INFO [2023-03-10 10:13:52] 
-Adding Reference Year.
--/                                                                                                                           /                                                                                                                           -                                                                                                                           INFO [2023-03-10 10:13:55] Series count: 1800
-INFO [2023-03-10 10:13:55] Starting PIM run.
-[1] "PIM started running: 2023-03-10 10:13:59"
-INFO [2023-03-10 10:17:30] Chaining Subset of Data.
--/                                                                                                                           /                                                                                                                           -                                                                                                                           [1] "GROUPING STATEMENT HAS reduced toChain Rows by: 756"
-[1] "CALCULATING Sector HOUSEHOLDS - AGGREGATED FOR SECTORS S.14 & S.15"
-[1] "25992 ROWS FOUND"
-[1] "AGGREGATED DOWN TO 18600 ROWS"
-[1] "S.1HN HOUSEHOLDS FINISHED"
-[1] "CALCULATING Industry ABDE - AGGREGATED FOR INDSUTRIES A, B, D, E"
-[1] "11116 ROWS FOUND"
-[1] "AGGREGATED DOWN TO 3564 ROWS"
-[1] "ABDE FINISHED"
-[1] "CALCULATING Asset OTH.MACH.EQ.WEAP (CORD: N11O) - AGGREGATED FOR Assets OTHER.MACHINERY & WEAPONS"
-[1] "112807 ROWS FOUND"
-[1] "AGGREGATED DOWN TO 110647 ROWS"
-[1] "OTH.MACH.EQ.WEAP FINISHED"
-[1] "CALCULATING Asset MACH.EQ.WEAP (CORD: N11M) - AGGREGATED FOR Assets MACH.EQ & WEAPONS"
-[1] "114976 ROWS FOUND"
-[1] "AGGREGATED DOWN TO 111952 ROWS"
-[1] "MACH.EQ.WEAP FINISHED"
-[1] "SPARE"
-[1] "Checking for missing Periods"
-[1] "Their are 16 Groups to Chain"
-INFO [2023-03-10 13:42:40] Loop: 1/16 - Starting chain of Sector: S.1 - Number of Rows: 181248
-[1] "MY_WARNING:   Warning:\nThere was 1 warning in `dplyr::mutate()`.\nℹ In argument: `chained = ... %doOrDoPar% ...`.\nCaused by warning:\n! `rename_()` was deprecated in dplyr 0.7.0.\nℹ Please use `rename()` instead.\nℹ The deprecated feature was likely used in the capstock package.\n  Please report the issue to the authors.\nThis warning is displayed once every 8 hours.\nCall `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.\n"
-[1] "Their are 16 Groups to Chain"
-INFO [2023-03-10 14:57:39] Loop: 1/16 - Starting chain of Sector: S.1 - Number of Rows: 181248
