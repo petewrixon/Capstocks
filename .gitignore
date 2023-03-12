@@ -9,6 +9,7 @@ save-points/
 *.DS_Store
 *.pptx
 model-runs/
+.DS_Store
 # History files
 .Rhistory
 .Rapp.history
