@@ -8,7 +8,7 @@ outputs/
 save-points/
 *.DS_Store
 *.pptx
-
+model-runs/
 # History files
 .Rhistory
 .Rapp.history

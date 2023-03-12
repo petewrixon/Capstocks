@@ -1,9 +1,27 @@
 ---
-User:
-  rdata.save.points: true
-  output:  r` Sys.time()`
-  input.files.url:
-    pim.inputs: 'https://www.ons.gov.uk/file?uri=/economy/nationalaccounts/uksectoraccounts/datasets/perpetualinventorymethodpiminputs/january2023/piminput.xlsx'
-    cofog.splits: 'https://www.ons.gov.uk/file?uri=/economy/nationalaccounts/uksectoraccounts/methodologies/capitalstocksuserguideuk/splitcofog.xlsx'
-    cvm.coverage: 'https://www.ons.gov.uk/file?uri=/economy/nationalaccounts/uksectoraccounts/methodologies/capitalstocksuserguideuk/cvmcoveragetable.xlsx'
-    agg.hierarchies: 'https://www.ons.gov.uk/file?uri=/economy/nationalaccounts/uksectoraccounts/methodologies/capitalstocksuserguideuk/hierarchiessectorindustryasset.xlsx'
+  title: Jan 2023 default run
+  input:
+    urls:
+      pim.inputs: 'https://www.ons.gov.uk/file?uri=/economy/nationalaccounts/uksectoraccounts/datasets/perpetualinventorymethodpiminputs/january2023/piminput.xlsx'
+      cofog.splits: 'https://www.ons.gov.uk/file?uri=/economy/nationalaccounts/uksectoraccounts/methodologies/capitalstocksuserguideuk/splitcofog.xlsx'
+      cvm.coverage: 'https://www.ons.gov.uk/file?uri=/economy/nationalaccounts/uksectoraccounts/methodologies/capitalstocksuserguideuk/cvmcoveragetable.xlsx'
+      agg.hierarchies: 'https://www.ons.gov.uk/file?uri=/economy/nationalaccounts/uksectoraccounts/methodologies/capitalstocksuserguideuk/hierarchiessectorindustryasset.xlsx'
+  run.params:
+    save.points: true
+    ref.period: Y2019Q4
+    to.chain.from: Y1995Q1
+    to.chain.to: Y2021Q4
+  output:
+    annual.estimates:
+      write.out: true
+      #options: csv, Rds
+      format: csv
+      #options: long, wide
+      structure: long
+    quarterly.estimates:
+      write.out: true
+      format: csv
+      structure: long
+    console.log:
+      write.out: true
+      log.per.script: true
