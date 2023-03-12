@@ -123,13 +123,10 @@ if (sum(failures) > 0)
   debug_path <- sprintf('./save-points/%s/debug/',runTime)
   if(!dir.exists(debug_path)){dir.create(debug_path)}
   
-  write_excel_csv(toChain, paste0(debug_path,toChain.csv))
-  write_excel_csv(chained, paste0(debug_path,chained.csv))
-  write_excel_csv(failures, paste0(debug_path, failures.csv))
+  saveRDS(toChain, paste0(debug_path,"toChain.Rds"))
+  saveRDS(chained, paste0(debug_path,"chained_full.Rds"))
+  saveRDS(chained[failures,], paste0(debug_path,'chained_failures.Rds'))
   
-  
-  errs <- chained[(failures),]
-  write_excel_csv(failures, paste0(debug_path, errs.csv))
   flog.warn(paste0(sum(failures), " series failed to process:"), chained[failures, ], capture = TRUE)
   chained <- chained[!(failures),]
 } else {

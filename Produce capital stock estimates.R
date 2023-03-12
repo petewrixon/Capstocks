@@ -1,5 +1,5 @@
 ###### Input parameters
-sink('runlog.txt')
+sink('runlog.txt', append = FALSE)
   # Specify input directory
 
 inputDir <- "~/Projects/r-projects/capital-stock-forecasts/inputs"
@@ -72,14 +72,15 @@ runTime <- format(Sys.time(), "%Y-%m-%d_%H%M") # Used in various file out names
 
 save_point_dir <- sprintf('./save-points/%s',runTime)
 
-if (!(dir.exists('./save-points/%s', runTime))) {
-  dir.create(sprintf('./save-points/%s',runTime), recursive = TRUE)
-} else{
-  dir.create(sprintf('./save-points/%s',runTime), recursive = FALSE)
-}
 outputs_dir <- sprintf('./outputs/%s',runTime)
 
+outputDir = outputs_dir
 
+if (!(dir.exists(outputs_dir))) {
+  dir.create(outputs_dir, recursive = TRUE)}
+
+if(!(dir.exists(save_point_dir))){
+  dir.create(save_point_dir, recursive = TRUE)}
 
 # Run sequential R scripts
 
