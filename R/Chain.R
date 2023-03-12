@@ -17,7 +17,7 @@ flog.info("Chaining Subset of Data.")
 
 ##################### SOURCE FILE FOR FUNCTIONS ###############################
 
-source("miscCapStocksFunctions.R")
+source("/R/miscCapStocksFunctions.R")
 
 ##################################################################################################################################
 # write_excel_csv(aggregated, path = paste0(outputDir, "AGGREGATED.csv"))
@@ -34,7 +34,7 @@ cols <- names(aggregated)
 
 ## REDUCE THE AGGREGATED DATA DOWN TO WHAT IS NEEDED USING THE COVERAGE TABLE IN AN EXCEL FILE IN THE INPUT FOLDER
 ## PULL IN THE COMBINATIONS OF SECTOR, INDUSTRY AND ASSET
-covTabStr <- paste0(inputDir, "cvmcoveragetable.xlsx")               # FILE PATH STRING
+covTabStr <- input_files$cvm.coverage$destfile             # FILE PATH STRING
 ##covTabStr <- paste0("Input/Mapping & Aggregation/TEST CVM_coverage_table.xlsx")             # FILE PATH STRING
 covTab <- read_excel(covTabStr, sheet = "CVM", col_types = "text")                           # OPEN THE FILE AND SELECT THE SHEET
 ## CREATE A NEW COLUMN THAT HOLDS A CONCATENATED STRING OF SECTOR, INDUSTRY AND ASSET
@@ -108,7 +108,7 @@ toChain <- rbind(toChain, createBespokeSecIndAssAggregations(toChain))
 # 'avg' as a string
 # 'sum' as a string
 # 4 as an integer
-source("miscCapStocksFunctions.R")
+source("/R/miscCapStocksFunctions.R")
 refYear <- substr(refPeriod,2,5)
 refYear <- as.double(refYear)
 
@@ -179,7 +179,7 @@ for (m in measures){
 
 # Hierarchies
 
-hierarchies <- paste0(inputDir, "hierarchiessectorindustryasset.xlsx")
+hierarchies <- input_files$agg.hierarchies$destfile
 secHier <- read_excel(hierarchies, sheet = "Sector", col_types = "text")
 indHier <- read_excel(hierarchies, sheet = "Industry", col_types = "text")
 assHier <- read_excel(hierarchies, sheet = "Asset", col_types = "text")
@@ -238,9 +238,22 @@ Annual_long <- Annual
 Annual <- spread(Annual, Period, Value)
 
 # Output
+output_config <- meta$config$output
 
-write.csv(Quarterly, file.path(outputs_dir,"quarterly_estimates.csv"), row.names=F)
-write.csv(Annual, file.path(outputs_dir,"Annual_estimates.csv"), row.names=F)
-
-write.csv(Quarterly_long, file.path(outputs_dir,"Quarterly_estimates_long.csv"), row.names = F)
-write.csv(Annual_long, file.path(outputs_dir,"Annual_estimates_long.csv"), row.names = F)
+if(output_config$quarterly.estimates$write.out){
+  if(output_config$quarterly.estimates$structure %in% c('long','both')) {
+    write.csv(Quarterly_long, file.path(outputDir,"Quarterly_estimates_long.csv"), row.names = F)
+  }
+  if(output_config$quarterly.estimates$structure %in% c('wide','both')) {
+    write.csv(Quarterly, file.path(outputDir,"Quarterly_estimates_wide.csv"), row.names=F)
+  }
+}
+  
+if(output_config$annual.estimates$write.out){
+  if(output_config$annual.estimates$structure %in% c('long','both')) {
+    write.csv(Annual_long, file.path(outputDir,"Annual_estimates_long.csv"), row.names = F)
+  }
+  if(output_config$quarterly.estimates$structure %in% c('wide','both')) {
+    write.csv(Annual, file.path(outputDir,"Annual_estimates_wide.csv"), row.names=F)
+  }
+}
