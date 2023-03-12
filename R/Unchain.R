@@ -127,7 +127,7 @@ out <- out %>% unnest(cols = c(data, unchained)) %>%
 out <- out %>% unnest(cols = c(data))
 
 # Reading in the reclassifications file
-reclassifications <- read_xlsx(path = paste0(inputDir,"piminput.xlsx"),
+reclassifications <- read_xlsx(path = pim.inputs.local),
                         sheet = 'Reclassification')
 reclassifications$From_Industry <- as.character(reclassifications$From_Industry)
 reclassifications$From_Industry <- ifelse(nchar(reclassifications$From_Industry)==2,reclassifications$From_Industry,paste0("0",reclassifications$From_Industry))
@@ -257,7 +257,7 @@ pimoutput <- out %>%
   nest() %>%
   ungroup()
 
-write_rds(pimoutput, paste0(outputDir, "pimOutput_reclass_", runTime, ".Rds"))
+write_rds(pimoutput, file.path(outputDir, "pim-output_3_reclass_.Rds"))
 
 # -------------------------- Remove Objects ------------------------------------
 rm(dataCols, pairs, failures, from, from_changed, from_unchanged, From_Asset, From_Industry, From_Sector, to, to_changed, to_unchanged,
