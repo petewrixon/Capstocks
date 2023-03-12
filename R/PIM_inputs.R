@@ -1,63 +1,32 @@
 
-# If input directory not set use current wd
-
-if (inputDir==("J:/Annual round/Userguide_test")){
-  
-  inputDir <- getwd("D:/Current code")
-  
-}
-
-# Ensure '/' at end of input directory
-
-if (substr(inputDir,nchar(inputDir),nchar(inputDir))!="/"){
-  
-  inputDir <- paste0(inputDir,"/") 
-  
-}
 
 # Read in run parameters
 
-params <- read_xlsx(path = paste0(inputDir,"piminput.xlsx"),
-                    sheet = 'Run_parameters')
 
-toChainFrom <- params$toChainFrom # quarter to chain from
-toChainTo <- params$toChainTo # quarter to chain to
-refPeriod <- params$refPeriod # reference period
+params <- meta$config$run.params
 
-# Specify output directory
+toChainFrom <- params$to.chain.from # quarter to chain from
+toChainTo <- params$to.chain.to # quarter to chain to
+refPeriod <- params$ref.period # reference period
 
-outputDir <- params$outputDir
-
-# If output directory not set use current wd
-
-if (is.na(outputDir)){
-  
-  outputDir <- getwd()
-  
-}
-
-if (substr(outputDir,nchar(outputDir),nchar(outputDir))!="/"){
-  
-  outputDir <- paste0(outputDir,"/")
-  
-}
 
 # Read in GFCF and deflators, then combine
 
-gfcf <- read_xlsx(path = paste0(inputDir,"piminput.xlsx"),
-                  sheet = 'GFCF_CP')
+pim.inputs.local <- input_files$pim.inputs$destfile
 
+gfcf <- read_xlsx(path = input_files$pim.inputs$destfile,
+                  sheet = 'GFCF_CP')
 
 
 # add columns
 
-AverageLifeLengths <- read_xlsx(path = paste0(inputDir,"piminput.xlsx"),sheet = 'AverageLifeLengths', col_types = "text")
+AverageLifeLengths <- read_xlsx(path = pim.inputs.local,sheet = 'AverageLifeLengths', col_types = "text")
 
-CoVs <- read_xlsx(path = paste0(inputDir,"piminput.xlsx"),sheet = 'CoVs', col_types = "text")
+CoVs <- read_xlsx(path = pim.inputs.local,sheet = 'CoVs', col_types = "text")
 
-Min <- read_xlsx(path = paste0(inputDir,"piminput.xlsx"),sheet = 'Min', col_types = "text")
+Min <- read_xlsx(path = pim.inputs.local,sheet = 'Min', col_types = "text")
 
-Max <- read_xlsx(path = paste0(inputDir,"piminput.xlsx"),sheet = 'Max', col_types = "text")
+Max <- read_xlsx(path = pim.inputs.local,sheet = 'Max', col_types = "text")
 
 
 add_columns <- function(dat){
@@ -87,7 +56,7 @@ gfcf <- gather(gfcf, Period, gfcfCP, 4:ncol(gfcf))
 
 #Add rows
 
-Other <- read_xlsx(path = paste0(inputDir,"piminput.xlsx"),sheet = 'Other', col_types = "text")
+Other <- read_xlsx(path = pim.inputs.local,sheet = 'Other', col_types = "text")
 
 
 add_rows <- function(dat){
@@ -109,7 +78,7 @@ add_rows <- function(dat){
 Other <- add_rows(Other)
 ######################################################################
 
-deflators <- read_xlsx(path = paste0(inputDir,"piminput.xlsx"),
+deflators <- read_xlsx(path = pim.inputs.local,
                        sheet = 'Price_index')
 deflators <- gather(deflators, Period, PriceIndex, 4:ncol(deflators))
 gfcf <- left_join(gfcf, deflators, by = c('Sector', 'Industry', 'Asset', 'Period'))
@@ -121,7 +90,7 @@ gfcf <- gfcf %>%
   ungroup()
 
 # Read in asset lives and combine
-source("miscCapStocksFunctions.R")
+source("R/miscCapStocksFunctions.R")
 gfcf <- joinLifeLengths(gfcf, AverageLifeLengths, CoVs, Min, Max)
 
 gfcf$Average <- as.numeric(gfcf$Average)
@@ -131,7 +100,7 @@ gfcf$Min <- as.numeric(gfcf$Min)
 
 # Adjustments
 
-adjustments <- read_xlsx(path = paste0(inputDir,"piminput.xlsx"),
+adjustments <- read_xlsx(path = pim.inputs.local,
                          sheet = 'OCIV')
 gfcf <- left_join(gfcf, adjustments, by = c("Sector", "Industry", "Asset", "Period"))
 
@@ -144,8 +113,8 @@ gfcf <- mutate_at(gfcf, .vars = c("K1CP", "K3CP", "K4CP", "K5CP", "K61CP", "K62C
 # Add other parameters
 
 tax_util <- Other
-write.csv(tax_util, file= paste0(inputDir, "series_tax_util_cpi_reshape.csv"), row.names=FALSE)
-gfcf <- addOtherParams(gfcf, paste0(inputDir, "series_tax_util_cpi_reshape.csv"))
+write.csv(tax_util, file= file.path(inputDir, "series_tax_util_cpi_reshape.csv"), row.names=FALSE)
+gfcf <- addOtherParams(gfcf, file.path(inputDir, "series_tax_util_cpi_reshape.csv"))
 rm(tax_util)
 file.remove(paste0(inputDir, "series_tax_util_cpi_reshape.csv"))
 
@@ -183,7 +152,7 @@ inputData <- gfcf %>%
 
 # Profiles
 
-configs <- read_xlsx(path = paste0(inputDir,"piminput.xlsx"),
+configs <- read_xlsx(path = pim.inputs.local,
                      sheet = 'Dep_ret_profiles')
 
 configs <- expandConfigSpec(configs, toCover = inputData, joinKeys = c("Asset", "Industry", "Sector"))

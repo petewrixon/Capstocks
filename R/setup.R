@@ -53,10 +53,17 @@ inputDir = meta$run$subdirs$input
 outputDir = meta$run$subdirs$output
 saveDir = meta$run$subdirs$save.point
 
-for (url in meta$config$input$urls) {
-  
-  download.file(url, destfile = file.path(inputDir,basename(file.path(url))))
-  
+meta$config$input$urls$pim.inputs$basename <- basename(file.path)
 
-}
+input_files <- rrapply::rrapply(meta$config$input$urls, how = "melt") %>%
+  rename(file_type = L1) %>%
+  tidyr::pivot_wider(names_from = L2, values_from = value) %>%
+  mutate(basename = basename(file.path(src_url))) %>%
+  mutate(destfile = file.path(inputDir,basename))
+
+for (i in 1:nrow(input_files)) {
+  
+  download.file(url = input_files$src_url[[i]], 
+                destfile = input_files$destfile[[i]])
+  }
 
