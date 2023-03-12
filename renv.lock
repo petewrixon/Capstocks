@@ -275,11 +275,11 @@
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
+      "RemoteRepo": "capstocks_source_files",
       "RemoteUsername": "ONSdigital",
-      "RemoteRepo": "Capstocks_source_files",
-      "RemoteSubdir": "capstock",
       "RemoteRef": "main",
       "RemoteSha": "8f4aba4543a56048a557fb18b56d6e964f5a35ea",
+      "RemoteSubdir": "capstock",
       "Requirements": [
         "bench",
         "data.table",
@@ -291,7 +291,7 @@
         "purrr",
         "tidyr"
       ],
-      "Hash": "0817fc7b1c7b75267359843bb8bc0435"
+      "Hash": "9dec69b6150270b75fb79eaf64668870"
     },
     "cellranger": {
       "Package": "cellranger",

@@ -4,6 +4,8 @@ if (!(renv_status$synchronized)) {
   renv::restore()
 }
 
+
+
 # CRAN packages
 # iii
 library(dplyr)
@@ -14,7 +16,12 @@ library(tibble)
 library(tidyr)
 library(tempdisagg)
 # Capstock packages
-library(capstock)
+tryCatch(library(capstock), error=function(){
+  remotes::install_github(repo = 'ONSdigital/capstocks_source_files', 
+                          subdir = 'capstock', 
+                          ref = 'main', 
+                          force = TRUE)
+})
 library(pimIO)
 library(prepim)
 # Packages for Forecasting

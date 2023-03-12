@@ -20,7 +20,7 @@ if (file.path(renv.project.path)!=file.path(getwd())) {
   stop()
 }
 
-uncommitted_r_files <- gert::git_status %>% 
+uncommitted_r_files <- gert::git_status() %>% 
   filter(grepl('^.*.R$',file))
 
 if (nrow(uncommitted_r_files)>0) {
