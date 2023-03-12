@@ -116,7 +116,7 @@ tax_util <- Other
 write.csv(tax_util, file= file.path(inputDir, "series_tax_util_cpi_reshape.csv"), row.names=FALSE)
 gfcf <- addOtherParams(gfcf, file.path(inputDir, "series_tax_util_cpi_reshape.csv"))
 rm(tax_util)
-file.remove(paste0(inputDir, "series_tax_util_cpi_reshape.csv"))
+file.remove(file.path(inputDir, "series_tax_util_cpi_reshape.csv"))
 
 # Set-aside terminal costs, which are immediately
 # consumed  
@@ -129,7 +129,7 @@ gfcf <- filter(gfcf, Asset!="TERMINAL")
 # Some stocks don't last until reference year so just use their max period
 
 flog.info("\nAdding Reference Year.")
-refYear <- params$refPeriod
+refYear <- params$ref.period
 
 # Re-referencing deflators
 
@@ -197,3 +197,4 @@ lastCompleteYear <- max(as.numeric(substr(lastCompleteYear,2,5)))
 # Remove series not required
 
 rm(adjustments, deflators, gfcf, noData, params, Other)
+
