@@ -127,7 +127,7 @@ chainDataSkippingErrors <- function(cDat, benchType = 4, refYear, correct_CVM)
   tryCatch(
   {
     #cDat <- toChain
-    source("chainingScript.R")
+    source("./R/chainingScript.R")
 
     pairs <- tribble(
       ~PYP, ~CYP, ~ChainType,

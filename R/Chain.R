@@ -17,7 +17,7 @@ flog.info("Chaining Subset of Data.")
 
 ##################### SOURCE FILE FOR FUNCTIONS ###############################
 
-source("/R/miscCapStocksFunctions.R")
+source("./R/miscCapStocksFunctions.R")
 
 ##################################################################################################################################
 # write_excel_csv(aggregated, path = paste0(outputDir, "AGGREGATED.csv"))
@@ -108,7 +108,7 @@ toChain <- rbind(toChain, createBespokeSecIndAssAggregations(toChain))
 # 'avg' as a string
 # 'sum' as a string
 # 4 as an integer
-source("/R/miscCapStocksFunctions.R")
+source("./R/miscCapStocksFunctions.R")
 refYear <- substr(refPeriod,2,5)
 refYear <- as.double(refYear)
 

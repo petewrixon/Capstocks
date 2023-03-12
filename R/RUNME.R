@@ -1,7 +1,7 @@
 ###### Input parameters
 sink(file = 'run.log', append = FALSE)
 
-source('/R/setup.R')
+source('./R/setup.R')
 
   # Read in PIM inputs
 

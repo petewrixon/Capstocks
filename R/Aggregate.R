@@ -15,7 +15,7 @@ out$Asset[out$Asset=="OTH.MACH.WEAP"] <- "WEAPONS"
 
 #### SECTION TO CALL BESPOKE CALCULATIONS - CALLED FROM SCRIPT bespokeDataCalculations.R ####
 
-source("/R/bespokeDataCalculations.R")
+source("./R/bespokeDataCalculations.R")
 
 # UNNEST DATA
 

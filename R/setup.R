@@ -4,7 +4,7 @@
 
 # Package Loading ---------------------------------------------------------
 
-source('R/setup-packages.R')
+source('./R/setup-packages.R')
 
 meta <- list()
 meta$run_id <- format(Sys.time(), '%y%m%d%H%S')
