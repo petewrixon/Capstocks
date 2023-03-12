@@ -312,11 +312,11 @@
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteRepo": "capstocks_source_files",
-      "RemoteUsername": "ONSDigital",
+      "RemoteRepo": "Capstocks_source_files",
+      "RemoteUsername": "ONSdigital",
       "RemoteRef": "HEAD",
       "RemoteSha": "8f4aba4543a56048a557fb18b56d6e964f5a35ea",
-      "RemoteSubdir": "capstock",
+      "RemoteSubdir": "/capstock",
       "Requirements": [
         "bench",
         "data.table",
@@ -328,7 +328,7 @@
         "purrr",
         "tidyr"
       ],
-      "Hash": "7ed81265da06888b539e59865caa4d49"
+      "Hash": "449a790f50d08634e53ab65f6bdac335"
     },
     "cellranger": {
       "Package": "cellranger",
@@ -1985,7 +1985,7 @@
     },
     "tibble": {
       "Package": "tibble",
-      "Version": "3.1.8",
+      "Version": "3.2.0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -2000,7 +2000,7 @@
         "utils",
         "vctrs"
       ],
-      "Hash": "56b6934ef0f8c68225949a8672fe1a8f"
+      "Hash": "37695ff125982007d42a59ad10982ff2"
     },
     "tidyr": {
       "Package": "tidyr",
