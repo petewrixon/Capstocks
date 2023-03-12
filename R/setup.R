@@ -59,8 +59,7 @@ input_files <- rrapply::rrapply(meta$config$input$urls, how = "melt") %>%
   mutate(basename = basename(file.path(src_url))) %>%
   mutate(destfile = file.path(inputDir,basename))
 
-input_files <- setNames(split(input_files, seq(nrow(input_files))),
-         input_files$file_type)
+
 
 for (i in 1:nrow(input_files)) {
   
@@ -68,3 +67,5 @@ for (i in 1:nrow(input_files)) {
                 destfile = input_files$destfile[[i]])
   }
 
+input_files <- setNames(split(input_files, seq(nrow(input_files))),
+                        input_files$file_type)
