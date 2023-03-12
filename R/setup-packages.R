@@ -21,7 +21,8 @@ tryCatch(library(capstock), error=function(){
                           subdir = 'capstock', 
                           ref = 'main', 
                           force = TRUE)
-})
+  library(capstock)}
+)
 library(pimIO)
 library(prepim)
 # Packages for Forecasting
