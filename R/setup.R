@@ -53,8 +53,6 @@ inputDir = meta$run$subdirs$input
 outputDir = meta$run$subdirs$output
 saveDir = meta$run$subdirs$save.point
 
-meta$config$input$urls$pim.inputs$basename <- basename(file.path)
-
 input_files <- rrapply::rrapply(meta$config$input$urls, how = "melt") %>%
   rename(file_type = L1) %>%
   tidyr::pivot_wider(names_from = L2, values_from = value) %>%
