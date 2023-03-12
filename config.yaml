@@ -1,0 +1,9 @@
+---
+User:
+  rdata.save.points: true
+  output:  r` Sys.time()`
+  input.files.url:
+    pim.inputs: 'https://www.ons.gov.uk/file?uri=/economy/nationalaccounts/uksectoraccounts/datasets/perpetualinventorymethodpiminputs/january2023/piminput.xlsx'
+    cofog.splits: 'https://www.ons.gov.uk/file?uri=/economy/nationalaccounts/uksectoraccounts/methodologies/capitalstocksuserguideuk/splitcofog.xlsx'
+    cvm.coverage: 'https://www.ons.gov.uk/file?uri=/economy/nationalaccounts/uksectoraccounts/methodologies/capitalstocksuserguideuk/cvmcoveragetable.xlsx'
+    agg.hierarchies: 'https://www.ons.gov.uk/file?uri=/economy/nationalaccounts/uksectoraccounts/methodologies/capitalstocksuserguideuk/hierarchiessectorindustryasset.xlsx'
