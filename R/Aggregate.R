@@ -15,12 +15,12 @@ out$Asset[out$Asset=="OTH.MACH.WEAP"] <- "WEAPONS"
 
 #### SECTION TO CALL BESPOKE CALCULATIONS - CALLED FROM SCRIPT bespokeDataCalculations.R ####
 
-source("bespokeDataCalculations.R")
+source("/R/bespokeDataCalculations.R")
 
 # UNNEST DATA
 
 # Split relevant S.13 COFOG's
-indSplit <- read_excel(paste0(inputDir, "splitcofog.xlsx"), sheet = "split_COFOG", col_types = "text") # PULL IN THE SPLITS FROM THE SPREADSHEET
+indSplit <- read_excel(input_files$cofog.splits$destfile, sheet = "split_COFOG", col_types = "text") # PULL IN THE SPLITS FROM THE SPREADSHEET
 toSplit <- unique(paste0(indSplit$Sector,indSplit$Industry))
 indSplit <- indSplit %>% gather(key = 'Period', value = "Perc", 4:ncol(indSplit))
 indSplit$Perc <- as.numeric(indSplit$Perc)
@@ -89,7 +89,7 @@ out$ConsumptionOfFixedCapitalCYP [ out$Asset=="CULTIVATED" ] <- 0
 flog.info("Reading aggregation hierarchies.")
 # Note, to avoid category conflicts each hierarchy column should be unique across
 # the three hierarchies
-hierarchies <- paste0(inputDir, "hierarchiessectorindustryasset.xlsx")
+hierarchies <- input_files$agg.hierarchies$destfile
 secHier <- read_excel(hierarchies, sheet = "Sector", col_types = "text")
 indHier <- read_excel(hierarchies, sheet = "Industry", col_types = "text")
 assHier <- read_excel(hierarchies, sheet = "Asset", col_types = "text")
