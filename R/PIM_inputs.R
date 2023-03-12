@@ -90,7 +90,7 @@ gfcf <- gfcf %>%
   ungroup()
 
 # Read in asset lives and combine
-source("R/miscCapStocksFunctions.R")
+source("./R/miscCapStocksFunctions.R")
 gfcf <- joinLifeLengths(gfcf, AverageLifeLengths, CoVs, Min, Max)
 
 gfcf$Average <- as.numeric(gfcf$Average)
