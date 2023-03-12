@@ -40,7 +40,7 @@ pimOutput$Measure <- gsub("CVM", "KP", pimOutput$Measure)
 
 # Write to a CSV
 
-write_csv(pimOutput, paste0(outputDir, "pim_outputs_", runTime, ".csv"))
+write_csv(pimOutput, file.path(outputDir, "pimOutput_2_renamed.csv"))
 
 # -------------------------- Remove Objects ------------------------------------
 rm(baseVariables, requiredVariables, pimOutput)
