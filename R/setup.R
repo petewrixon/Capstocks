@@ -33,7 +33,7 @@ run.name = paste0(meta$run_id,'-',
 
 run_path_root = file.path('model-runs',run.name)
 
-dir_create(run_path_root, recursive = T)
+dir.create(run_path_root, recursive = T)
 
 meta$run$subdirs <- purrr::map(run_path_root,file.path,list('inputs','outputs','save-points'))[[1]]
 
