@@ -127,7 +127,7 @@ out <- out %>% unnest(cols = c(data, unchained)) %>%
 out <- out %>% unnest(cols = c(data))
 
 # Reading in the reclassifications file
-reclassifications <- read_xlsx(path = pim.inputs.local),
+reclassifications <- read_xlsx(path = pim.inputs.local,
                         sheet = 'Reclassification')
 reclassifications$From_Industry <- as.character(reclassifications$From_Industry)
 reclassifications$From_Industry <- ifelse(nchar(reclassifications$From_Industry)==2,reclassifications$From_Industry,paste0("0",reclassifications$From_Industry))
