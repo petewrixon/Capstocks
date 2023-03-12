@@ -9,25 +9,26 @@ sink('runlog.txt', append = FALSE)
 source("./R/PIM_inputs.R")
 
   # Run PIM
+save.point.q = meta$config$run.params$save.points
 
 source("./R/Run_pim.R")
-save.image(file = file.path('./save-points',runTime,'1_aft_Run_pim.Rdata'))
+if(save.point.q) save.image(file = file.path('./save-points',runTime,'1_aft_Run_pim.Rdata'))
 
   # Write out selected data (before post-processing)
 
 source("./R/Write_PIM_outputs.R")
-save.image(file = file.path('./save-points',runTime,'/2_aft_Write_pim.Rdata'))
+if(save.point.q) save.image(file = file.path('./save-points',runTime,'/2_aft_Write_pim.Rdata'))
   # Unchain results and perform reclassifications
 
 source("./R/Unchain.R")
-save.image(file = file.path('./save-points',runTime,'/3_aft_unchain.Rdata'))
+if(save.point.q) save.image(file = file.path('./save-points',runTime,'/3_aft_unchain.Rdata'))
   # Aggregate
 
 source("./R/Aggregate.R")
-save.image(file = file.path('./save-points',runTime,'/4_aft_aggregate.Rdata'))
+if(save.point.q) save.image(file = file.path('./save-points',runTime,'/4_aft_aggregate.Rdata'))
 # Chain & ANNUALISATION
 
 source("./R/Chain.R")
-save.image(file = file.path('./save-points',runTime,'/5_aft_chain.Rdata'))
+if(save.point.q) save.image(file = file.path('./save-points',runTime,'/5_aft_chain.Rdata'))
 
 sink()
