@@ -1,6 +1,11 @@
 # RUNME.R -------------------------------------------------------------------
 # The script to source when producing a model run. 
 
+
+# Package Loading ---------------------------------------------------------
+
+source('R/setup-packages.R')
+
 meta <- list()
 meta$run_id <- format(Sys.time(), '%y%m%d%H%S')
 meta$runtime <- Sys.time()
@@ -48,7 +53,10 @@ inputDir = meta$run$subdirs$input
 outputDir = meta$run$subdirs$output
 saveDir = meta$run$subdirs$save.point
 
-for (url in unlist(meta$config$input$urls)) {
+for (url in meta$config$input$urls) {
+  
   download.file(url, destfile = file.path(inputDir,basename(file.path(url))))
+  
+
 }
-curl::curl(url = url)
+
