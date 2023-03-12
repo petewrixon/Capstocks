@@ -1,5 +1,5 @@
 ###### Input parameters
-sink(file = 'run.log', append = FALSE)
+#sink(file = 'run.log', append = FALSE)
 
 source('./R/setup.R')
 
