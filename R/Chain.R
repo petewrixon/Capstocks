@@ -118,14 +118,13 @@ chained <- chainDataSkippingErrors(toChain, benchType = 4, refYear, correct_CVM 
 
 # CHECK FOR FAILURES AND LIST IF ANY APPEAR
 failures <- unlist(lapply(chained$chained, FUN = function(x) inherits(x, "error")))
-if (sum(failures) > 0)
-{
-  debug_path <- sprintf('./save-points/%s/debug/',runTime)
+if (sum(failures) > 0) {
+  debug_path <- file.path(outputDir, "debug")
   if(!dir.exists(debug_path)){dir.create(debug_path)}
   
-  saveRDS(toChain, paste0(debug_path,"toChain.Rds"))
-  saveRDS(chained, paste0(debug_path,"chained_full.Rds"))
-  saveRDS(chained[failures,], paste0(debug_path,'chained_failures.Rds'))
+  saveRDS(toChain, file.path(debug_path,"toChain.Rds"))
+  saveRDS(chained, file.path(debug_path,"chained_full.Rds"))
+  saveRDS(chained[failures,], file.path(debug_path,'chained_failures.Rds'))
   
   flog.warn(paste0(sum(failures), " series failed to process:"), chained[failures, ], capture = TRUE)
   chained <- chained[!(failures),]
