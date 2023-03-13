@@ -1,5 +1,4 @@
-###### Input parameters
-#sink(file = 'run.log', append = FALSE)
+
 
 source('./R/setup.R')
 
@@ -29,7 +28,3 @@ if(save.point.q) save.image(file = file.path(saveDir,'4_post_aggregate.Rdata'))
 
 source("./R/Chain.R")
 if(save.point.q) save.image(file = file.path(saveDir,'5_post_chain.Rdata'))
-
-sink()
-file.copy('run.log',file.path(outputDir,'run.log'))
-file.remove('run.log')
