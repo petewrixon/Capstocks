@@ -64,7 +64,8 @@ input_files <- rrapply::rrapply(meta$config$input$urls, how = "melt") %>%
 for (i in 1:nrow(input_files)) {
   
   download.file(url = input_files$src_url[[i]], 
-                destfile = input_files$destfile[[i]])
+                destfile = input_files$destfile[[i]],
+                mode = "wb")
   }
 
 input_files <- setNames(split(input_files, seq(nrow(input_files))),
