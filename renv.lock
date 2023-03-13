@@ -271,14 +271,14 @@
     },
     "capstock": {
       "Package": "capstock",
-      "Version": "1.0.0",
+      "Version": "1.0.1",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "capstocks_source_files",
-      "RemoteUsername": "ONSdigital",
+      "RemoteUsername": "petewrixon",
       "RemoteRef": "main",
-      "RemoteSha": "8f4aba4543a56048a557fb18b56d6e964f5a35ea",
+      "RemoteSha": "eedd4fcc16c5391fee499cc75f332355cca1d1c3",
       "RemoteSubdir": "capstock",
       "Requirements": [
         "bench",
@@ -287,11 +287,15 @@
         "dplyr",
         "forcats",
         "foreach",
+        "futile.logger",
+        "lazyeval",
+        "magrittr",
         "parallel",
         "purrr",
+        "readr",
         "tidyr"
       ],
-      "Hash": "30d593c82c4cfc5c3c6cd091876f396e"
+      "Hash": "c4c461dc723e93df0a9c4d6888e598df"
     },
     "cellranger": {
       "Package": "cellranger",
