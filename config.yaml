@@ -3,7 +3,7 @@
   input:
     urls:
       pim.inputs:
-        src_url: 'https://www.ons.gov.uk/file?uri=/economy/nationalaccounts/uksectoraccounts/datasets/inventorymethodpiminputs/january2023/piminput.xlsx'
+        src_url: 'https://www.ons.gov.uk/file?uri=/economy/nationalaccounts/uksectoraccounts/datasets/perpetualinventorymethodpiminputs/january2023/piminput.xlsx'
       cofog.splits: 
         src_url: 'https://www.ons.gov.uk/file?uri=/economy/nationalaccounts/uksectoraccounts/methodologies/capitalstocksuserguideuk/splitcofog.xlsx'
       cvm.coverage: 

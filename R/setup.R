@@ -40,13 +40,13 @@ if (nrow(uncommitted_r_files)>0) {
   if (!(meta$config$inputs$run.params$override.git.restriction)) {
   stop("There are uncommited changes to the project's R files.
        For the sake of reproducibility, please either commit or stash these files.")
-  }} else {
+  } else {
   warning("There are uncommitted changes to the project's R files. 
 However, the 'git.override.restriction' parameter has been provided.
 Details of the deviations can be found in the output config file and the end of the model run.")
     
     meta$git.info$commit.deviations = as.list(gert::git_info())
-} 
+} }
 
 
 # Set up model-run subdirectory -------------------------------------------
