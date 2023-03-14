@@ -275,11 +275,11 @@
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteRepo": "capstocks_source_files",
-      "RemoteUsername": "petewrixon",
+      "RemoteUsername": "pwrixon-hmt",
+      "RemoteRepo": "Capstocks_source_files",
+      "RemoteSubdir": "capstock",
       "RemoteRef": "main",
       "RemoteSha": "eedd4fcc16c5391fee499cc75f332355cca1d1c3",
-      "RemoteSubdir": "capstock",
       "Requirements": [
         "bench",
         "data.table",
@@ -295,7 +295,7 @@
         "readr",
         "tidyr"
       ],
-      "Hash": "c4c461dc723e93df0a9c4d6888e598df"
+      "Hash": "09c4ea72e2aea473a368a46b5478c0d2"
     },
     "cellranger": {
       "Package": "cellranger",
