@@ -4,8 +4,6 @@
 .Ruserdata
 *.csv
 *.Rds
-outputs/
-save-points/
 *.DS_Store
 *.pptx
 model-runs/
