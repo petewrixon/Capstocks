@@ -29,4 +29,4 @@ if(save.point.q) save.image(file = file.path(saveDir,'4_post_aggregate.Rdata'))
 source("./R/Chain.R")
 if(save.point.q) save.image(file = file.path(saveDir,'5_post_chain.Rdata'))
 
-
+yaml::write_yaml(meta, file.path(run_path_root,"meta.yaml"))
