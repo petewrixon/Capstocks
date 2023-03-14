@@ -15,15 +15,17 @@
     ref.period: Y2019Q4
     to.chain.from: Y1995Q1
     to.chain.to: Y2021Q4
+    override.git.restriction: FALSE
   output:
     annual.estimates:
       write.out: true
-      #options: csv, Rds
+      #options: csv, Rds NB: not in use yet
       format: csv
-      #options: long, wide
+      #options: long, wide, both
       structure: long
     quarterly.estimates:
       write.out: true
+      #options: csv, RDS - NB: not in use yet
       format: csv
       structure: long
     console.log:
