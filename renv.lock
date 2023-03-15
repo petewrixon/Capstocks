@@ -276,8 +276,8 @@
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "capstocks_source_files",
-      "RemoteUsername": "petewrixon",
-      "RemoteRef": "main",
+      "RemoteUsername": "pwrixon-hmt",
+      "RemoteRef": "capstock_1.0.1",
       "RemoteSha": "eedd4fcc16c5391fee499cc75f332355cca1d1c3",
       "RemoteSubdir": "capstock",
       "Requirements": [
@@ -295,7 +295,7 @@
         "readr",
         "tidyr"
       ],
-      "Hash": "c4c461dc723e93df0a9c4d6888e598df"
+      "Hash": "7660262c75b13cc9f970b51471b8317c"
     },
     "cellranger": {
       "Package": "cellranger",
@@ -1275,14 +1275,14 @@
     },
     "rlang": {
       "Package": "rlang",
-      "Version": "1.0.6",
+      "Version": "1.1.0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "R",
         "utils"
       ],
-      "Hash": "4ed1f8336c8d52c3e750adcdc57228a7"
+      "Hash": "dc079ccd156cde8647360f473c1fa718"
     },
     "rprojroot": {
       "Package": "rprojroot",
